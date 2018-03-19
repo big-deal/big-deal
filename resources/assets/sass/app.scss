@@ -1,6 +1,7 @@
 
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 // Variables
 @import "variables";
@@ -8,7 +9,67 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+.navbar {
+  &.navbar-laravel {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+
+    .navbar-nav {
+      .nav-item.dropdown {
+        .dropdown-menu {
+          .dropdown-item {
+            .fa {
+              &.fa-fw {
+                margin-left: -.75rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.card-header {
+  .breadcrumb {
+    background-color: transparent;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+
+/* Sticky footer styles
+   -------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+
+  body {
+    @include media-breakpoint-down(xs) {
+      margin-bottom: 90px; /* Margin bottom by footer height */
+    }
+    @include media-breakpoint-up(xs) {
+      margin-bottom: 60px; /* Margin bottom by footer height */
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      min-height: 54px; /* Set the fixed height of the footer here */
+      //line-height: 54px; /* Vertically center the text there */
+      background-color: #fff;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.04);
+
+      /* Custom page CSS
+         -------------------------------------------------- */
+      /* Not required for template or sticky footer method. */
+
+      .container {
+        width: auto;
+        max-width: 680px;
+        padding: 0 15px;
+      }
+    }
+  }
 }

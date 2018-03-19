@@ -15,5 +15,9 @@ mix
     .js('resources/assets/js/app.js', 'public/js')
     .sass('resources/assets/sass/app.scss', 'public/css')
 
+    .browserSync({
+        proxy: process.env.MIX_BROWSER_SYNC
+    })
+
     .version()
     .sourceMaps();
