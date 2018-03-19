@@ -1,6 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
-if (!function_exists('have_fun')) {
+declare(strict_types=1);
+
+if (! function_exists('have_fun')) {
     function have_fun($normal = 1, $april_fools_day = 30)
     {
         $now = \Carbon\Carbon::now();
