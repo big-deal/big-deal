@@ -73,7 +73,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Create or edit view
+     * Create or edit view.
      *
      * @param \App\Models\Company $company
      *
@@ -102,7 +102,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Insert or Update method
+     * Insert or Update method.
      *
      * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Company $company
