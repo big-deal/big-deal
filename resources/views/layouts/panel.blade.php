@@ -16,14 +16,14 @@
                         </nav>
                     </div>
 
-                    <div class="card-body">
-                        @if (session('status'))
+                    @if (session('status'))
+                        <div class="card-body">
                             <div class="alert alert-success">
                                 {{ session('status') }}
                             </div>
-                        @endif
-                        @yield('panel')
-                    </div>
+                        </div>
+                    @endif
+                    @yield('panel')
                 </div>
             </div>
         </div>

@@ -18,3 +18,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    /*
+     * Companies
+     */
+    Route::resource('companies', 'CompanyController', [
+        'except' => [
+            'show',
+        ],
+    ]);
+    Route::group(['as' => 'companies.', 'prefix' => 'companies'], function () {
+        Route::group(['prefix' => '{company}'], function () {
+            Route::match(['put', 'patch'], 'restore', 'CompanyController@restore')
+                ->name('restore');
+        });
+    });
+});
