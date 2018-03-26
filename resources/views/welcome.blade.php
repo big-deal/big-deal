@@ -9,6 +9,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
         <style>
@@ -46,7 +47,14 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 64px;
+            }
+
+            .title a {
+                color: #636b6f;
+                padding: 0 25px;
+                letter-spacing: .1rem;
+                text-decoration: none;
             }
 
             .links > a {
@@ -69,7 +77,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ route('companies.index') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
@@ -79,15 +87,19 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <div>
+                        <a href="https://amocrm.ru" target="_blank">
+                            amoCRM
+                        </a>
+                    </div>
+                    <a href="https://Finag.in" target="_blank">
+                        <i class="fa fa-code"></i>
+                    </a>
+                    <div>
+                        <a href="https://cloudpbx.beeline.ru" target="_blank">
+                            Beeline Cloud PBX
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
