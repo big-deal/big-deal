@@ -6,11 +6,6 @@
             {{ __('Login') }}
         </a>
     </li>
-    <li>
-        <a class="nav-link" href="{{ route('register') }}">
-            {{ __('Register') }}
-        </a>
-    </li>
 @else
     @includeIf('common.nav.right')
     <li class="nav-item dropdown">

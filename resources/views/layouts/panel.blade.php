@@ -16,13 +16,7 @@
                         </nav>
                     </div>
 
-                    @if (session('status'))
-                        <div class="card-body">
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        </div>
-                    @endif
+                    @includeIf('common.status')
                     @yield('panel')
                 </div>
             </div>

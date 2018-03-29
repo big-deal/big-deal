@@ -17,6 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::any('/register', function () {
+    return redirect(route('login'))->with('status', [
+        'message' => 'Registration disabled.',
+        'reason' => 'danger',
+    ]);
+});
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
