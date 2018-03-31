@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 if (! function_exists('have_fun')) {
-    function have_fun($normal = 1, $april_fools_day = 30)
+    function have_fun($normal = 1, $april_fools_day = 50)
     {
         $now = \Carbon\Carbon::now();
 
