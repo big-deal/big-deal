@@ -121,6 +121,6 @@ class CompanyController extends Controller
                 ->create($company_fill);
         }
 
-        return redirect(route('companies.edit', compact('company')));
+        return static::viewCreateOrEdit($company);
     }
 }
