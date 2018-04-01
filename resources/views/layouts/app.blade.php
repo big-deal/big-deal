@@ -37,6 +37,7 @@
         </main>
         @includeIf('common.footer')
     </div>
+    @stack('deletes')
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}"></script>
     @stack('scripts')

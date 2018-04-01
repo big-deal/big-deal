@@ -38,8 +38,17 @@ Route::group(['middleware' => 'auth'], function () {
     ]);
     Route::group(['as' => 'companies.', 'prefix' => 'companies'], function () {
         Route::group(['prefix' => '{company}'], function () {
-            Route::match(['put', 'patch'], 'restore', 'CompanyController@restore')
-                ->name('restore');
+            Route::match(['put', 'patch'], 'restore', 'CompanyController@restore')->name('restore');
+            /*
+             * Beeline
+             */
+            Route::resource('beelines', 'BeelineController', [
+                'only' => [
+                    'create',
+                    'store',
+                    'destroy',
+                ],
+            ]);
         });
     });
 });

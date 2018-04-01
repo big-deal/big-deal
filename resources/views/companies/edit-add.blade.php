@@ -10,32 +10,70 @@
     <div class="card-body">
         @component('common.form.edit-add', ['route' => 'companies', 'eloquent' => $company])
             <div class="form-group">
-                <label for="title">{{ __('Company title') }}</label>
-                <div class="input-group">
-                    <input type="text" id="title" name="title" class="form-control"
-                           aria-label="{{ __('Company title') }}"
-                           placeholder="{{ __('Company title') }}"
-                           value="{{ old('title', $company->title ?? '') }}">
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-outline-primary">
-                            {{ __('Save') }}
-                        </button>
-                        @if($company->id)
-                            <button class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
-                                    type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <div class="dropdown-menu">
-                                @component('common.form.delete', ['route' => 'companies', 'eloquent' => $company])
-                                    <button type="submit" class="dropdown-item">
-                                        <i class="fa fa-fw fa-trash text-danger"></i> {{ __('Delete') }}
-                                    </button>
-                                @endcomponent
-                            </div>
-                        @endif
-                    </div>
-                </div>
+                @component('common.input.text', [
+                    'id' => 'title', 'name' => 'title', 'label' => __('Company title'),
+                    'placeholder' => __('Company title'), 'value' => old('title', $company->title ?? ''),
+                ])
+                    <button type="submit" class="btn btn-outline-primary">
+                        {{ __('Save') }}
+                    </button>
+                    @if($company->id)
+                        @component('common.dropdown', ['class' => 'btn-outline-secondary'])
+                            @component('common.form.delete', [
+                                'class' => 'dropdown-item',
+                                'action' => route('companies.destroy', $company),
+                            ])<i class="fa fa-fw fa-trash text-danger"></i> {{ __('Delete') }}
+                            @endcomponent
+                        @endcomponent
+                    @endif
+                @endcomponent
             </div>
         @endcomponent
     </div>
+    @if($company->id)
+        <h5 class="card-header border-top my-0">
+            {{ __('Beeline PBX Configuration') }}
+        </h5>
+        <div class="table-responsive-sm">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ __('Token') }}</th>
+                    <th scope="col">{{ __('Status') }}</th>
+                    <th scope="col">
+                        <a href="{{ route('companies.beelines.create', [$company]) }}"
+                           class="btn btn-sm btn-primary btn-block">
+                            <i class="fa fa-fw fa-plus d-sm-none"></i>
+                            <span class="d-none d-sm-inline-block">{{ __('Append') }}</span>
+                        </a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                @forelse($company->beelines as $beeline)
+                    <tr>
+                        <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $beeline->token }}</td>
+                        <td class="text-{{ $beeline->subscribe_id ? 'success' : 'danger' }}">
+                            {{__( $beeline->subscribe_id ? 'Ok' : 'Failed' )}}
+                        </td>
+                        <td>
+                            @component('common.form.delete', [
+                                'class' => 'btn btn-sm btn-outline-danger btn-block',
+                                'action' => route('companies.beelines.destroy', [$company, $beeline]),
+                            ])<i class="fa fa-fw fa-trash d-sm-none"></i>
+                            <span class="d-none d-sm-inline-block">{{ __('Remove') }}</span>
+                            @endcomponent
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <th scope="row" colspan="4" class="text-center">{{ __('Empty') }}</th>
+                    </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
+    @endif
 @endsection

@@ -32,4 +32,12 @@ class Company extends Model
     {
         return $this->morphedByMany(User::class, 'company_manager');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function beelines()
+    {
+        return $this->hasMany(Beeline::class);
+    }
 }

@@ -9,8 +9,12 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.alerts > .alert:last-child {
+  margin-bottom: 0 !important;
+}
+
 .list-group-striped {
-  .list-group-item{
+  .list-group-item {
     &:nth-child(odd) {
       background-color: rgba(0, 0, 0, .05);
     }
