@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class AmoController extends Controller
 {
     /**
-     * Api method for check auth and get statuses and custom fields
+     * Api method for check auth and get statuses and custom fields.
      *
      * @param \Illuminate\Http\Request $request
      *

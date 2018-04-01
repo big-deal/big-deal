@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use AmoCRM\Client;
 use App\Models\Amo;
 use App\Models\Company;
-use Exception;
 use Illuminate\Http\Request;
 
 class AmoController extends Controller
@@ -76,6 +76,7 @@ class AmoController extends Controller
     {
         return view('amo.edit-add', compact('company', 'amo'));
     }
+
     /**
      * Insert or Update method.
      *

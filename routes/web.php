@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth'], function () {
                     'destroy',
                 ],
             ]);
-            /**
+            /*
              * AmoCRM
              */
             Route::resource('amos', 'AmoController', [

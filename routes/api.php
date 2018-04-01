@@ -18,8 +18,8 @@ Route::group(['as' => 'api.'], function () {
             Route::post('{beeline}/webhook', 'Api\BeelineController@webhook');
         });
     });
-    Route::group(['as' => 'roistat.', 'prefix' => 'roistat',], function () {
-        Route::group(['as' => 'webhook.old', 'prefix' => 'webhook',], function () {
+    Route::group(['as' => 'roistat.', 'prefix' => 'roistat'], function () {
+        Route::group(['as' => 'webhook.old', 'prefix' => 'webhook'], function () {
             Route::post('{amo}', function ($amo) {
                 return redirect(route('api.amo.roistat.webhook', $amo));
             });
@@ -28,7 +28,7 @@ Route::group(['as' => 'api.'], function () {
     Route::group(['as' => 'amo.', 'prefix' => 'amo'], function () {
         Route::post('auth', 'Api\AmoController@auth')
             ->name('auth');
-        Route::group(['as' => 'roistat.',], function () {
+        Route::group(['as' => 'roistat.'], function () {
             Route::post('{amo}/roistat/webhook', 'Api\RoistatController@webhook')
                 ->name('webhook');
         });
