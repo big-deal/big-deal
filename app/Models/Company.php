@@ -40,4 +40,12 @@ class Company extends Model
     {
         return $this->hasMany(Beeline::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function amo()
+    {
+        return $this->hasOne(Amo::class);
+    }
 }

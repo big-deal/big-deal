@@ -49,6 +49,17 @@ Route::group(['middleware' => 'auth'], function () {
                     'destroy',
                 ],
             ]);
+            /**
+             * AmoCRM
+             */
+            Route::resource('amos', 'AmoController', [
+                'only' => [
+                    'create',
+                    'store',
+                    'edit',
+                    'update',
+                ],
+            ]);
         });
     });
 });

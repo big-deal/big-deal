@@ -7,6 +7,7 @@
 @section('title', __($company->title ?? 'New company'))
 
 @section('panel')
+    @php/** @var \App\Models\Company $company */@endphp
     <div class="card-body">
         @component('common.form.edit-add', ['route' => 'companies', 'eloquent' => $company])
             <div class="form-group">
@@ -31,6 +32,45 @@
         @endcomponent
     </div>
     @if($company->id)
+        <h5 class="card-header border-top my-0">
+            {{ __('AmoCRM Configuration') }}
+        </h5>
+        <div class="table-responsive-sm">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">{{ __('Domain') }}</th>
+                    <th scope="col">{{ __('Status') }}</th>
+                    <th scope="col">
+                        @if(!$company->amo)
+                            <a href="{{ route('companies.amos.create', [$company]) }}"
+                               class="btn btn-sm btn-primary btn-block">
+                                <i class="fa fa-fw fa-plus d-sm-none"></i>
+                                <span class="d-none d-sm-inline-block">{{ __('Append') }}</span>
+                            </a>
+                        @endif
+                    </th>
+                </tr>
+                </thead>
+                @if($company->amo)
+                    <tbody>
+                    <tr>
+                        <td>{{ $company->amo->domain }}</td>
+                        <td class="text-{{ $company->amo->active ? 'success' : 'danger' }}">
+                            {{__( $company->amo->active ? 'Ok' : 'Failed' )}}
+                        </td>
+                        <td>
+                            <a href="{{ route('companies.amos.edit', [$company, $company->amo]) }}"
+                               class="btn btn-sm btn-outline-primary btn-block">
+                                <i class="fa fa-fw fa-trash d-sm-none"></i>
+                                <span class="d-none d-sm-inline-block">{{ __('Edit') }}</span>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                @endif
+            </table>
+        </div>
         <h5 class="card-header border-top my-0">
             {{ __('Beeline PBX Configuration') }}
         </h5>
