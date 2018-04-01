@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +12,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::group(['as' => 'api.',], function () {
-
-    Route::group(['as' => 'beeline.', 'prefix' => 'beeline',], function () {
-
-        Route::group(['as' => 'webhook',], function () {
+Route::group(['as' => 'api.'], function () {
+    Route::group(['as' => 'beeline.', 'prefix' => 'beeline'], function () {
+        Route::group(['as' => 'webhook'], function () {
             Route::post('{beeline}/webhook', 'Api\BeelineController@webhook');
         });
-
     });
-
 });

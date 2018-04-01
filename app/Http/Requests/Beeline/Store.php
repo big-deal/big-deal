@@ -24,7 +24,7 @@ class Store extends FormRequest
     public function rules()
     {
         return [
-            'token' => 'required|string|unique:beelines'
+            'token' => 'required|string|unique:beelines',
         ];
     }
 }

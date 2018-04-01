@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Beeline\Store;
 use App\Models\Beeline;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use App\Http\Requests\Beeline\Store;
 
 class BeelineController extends Controller
 {
