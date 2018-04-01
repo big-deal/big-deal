@@ -2,17 +2,15 @@
 
 namespace App\Jobs\Beeline;
 
-use App\Events\Beeline\Subscribed;
-use App\Events\Beeline\Subscribing;
 use App\Models\Beeline;
 use Illuminate\Bus\Queueable;
+use Ixudra\Curl\Facades\Curl;
+use App\Events\Beeline\Subscribed;
+use App\Events\Beeline\Subscribing;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Str;
-use Ixudra\Curl\Facades\Curl;
 
 class Subscribe implements ShouldQueue
 {
@@ -54,7 +52,7 @@ class Subscribe implements ShouldQueue
      */
     public function handle()
     {
-        if (!$this->mustHandled()) {
+        if (! $this->mustHandled()) {
             return;
         }
 
@@ -70,7 +68,7 @@ class Subscribe implements ShouldQueue
                 ->asJson()
                 ->get();
 
-            if (!isset($response->subscriptionId, $response->expires, $response->url)) {
+            if (! isset($response->subscriptionId, $response->expires, $response->url)) {
                 $this->newSubscription();
             }
         } else {
@@ -81,7 +79,7 @@ class Subscribe implements ShouldQueue
     }
 
     /**
-     * Subscribe
+     * Subscribe.
      */
     protected function newSubscription()
     {
@@ -108,6 +106,6 @@ class Subscribe implements ShouldQueue
      */
     protected function mustHandled()
     {
-        return !$this->from_event || (static::$first_call = !static::$first_call);
+        return ! $this->from_event || (static::$first_call = ! static::$first_call);
     }
 }

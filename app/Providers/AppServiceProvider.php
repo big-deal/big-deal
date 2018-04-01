@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
         Carbon::setLocale(config('app.locale', config('app.fallback_locale', 'en')));
 
         foreach (config('observers') as $model => $observer) {
-            /** @var \Illuminate\Database\Eloquent\Model $model */
+            /* @var \Illuminate\Database\Eloquent\Model $model */
             $model::observe($observer);
         }
     }
