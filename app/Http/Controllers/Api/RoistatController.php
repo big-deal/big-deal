@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Models\Amo;
+use App\Http\Controllers\Controller;
 
 class RoistatController extends Controller
 {

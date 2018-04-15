@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use AmoCRM\Client;
-use AmoCRM\Models\Account as AmoCRMAccount;
-use App\Http\Controllers\Controller;
 use App\Models\Amo;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use AmoCRM\Models\Account as AmoCRMAccount;
 
 class AmoController extends Controller
 {
@@ -22,7 +22,7 @@ class AmoController extends Controller
     {
         $connection = $amo->connection;
 
-        if (!is_null($connection)) {
+        if (! is_null($connection)) {
             $response = static::getStatusesAndCustomFields($connection->account);
 
             return response()->success($response);

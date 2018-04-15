@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Contracts\AmoSettingable as AmoSettingableContract;
 use App\Traits\AmoSettingable;
 use Illuminate\Database\Eloquent\Model;
+use App\Contracts\AmoSettingable as AmoSettingableContract;
 
 class AmoManager extends Model implements AmoSettingableContract
 {

@@ -24,7 +24,7 @@ class AmoSetting extends Model
     ];
 
     /**
-     * Default
+     * Default.
      *
      * @var array
      */
@@ -73,14 +73,14 @@ class AmoSetting extends Model
                 'label' => __('Minimum Duration'),
                 'default' => 0,
                 'required' => true,
-                'step' => 5
+                'step' => 5,
             ],
             'recording' => [
                 'view' => 'common.input.select',
                 'label' => __('Recording'),
                 'placeholder' => __('Choice Leads Status'),
                 'required' => true,
-                'options' => ['0' => 'Не записывать', '1' => 'Входящие', '2' => 'Исходящие', '3' => 'Все звонки',],
+                'options' => ['0' => 'Не записывать', '1' => 'Входящие', '2' => 'Исходящие', '3' => 'Все звонки'],
                 'default' => 3,
                 'without_default' => true,
             ],
@@ -89,7 +89,7 @@ class AmoSetting extends Model
                 'view' => 'common.input.select',
                 'label' => __('Roistat Field'),
                 'placeholder' => __('Choice Roistat Field'),
-                'help' => 'Setup WEBHOOK to URL'.($amo->id ? ': '.url(route('api.amo.roistat.webhook', $amo)) : '')
+                'help' => 'Setup WEBHOOK to URL'.($amo->id ? ': '.url(route('api.amo.roistat.webhook', $amo)) : ''),
             ],
 
             'field' => [

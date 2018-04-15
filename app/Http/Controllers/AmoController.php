@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use AmoCRM\Client;
 use App\Models\Amo;
-use App\Models\AmoSetting;
 use App\Models\Company;
-use Exception;
+use App\Models\AmoSetting;
 use Illuminate\Http\Request;
 
 class AmoController extends Controller
