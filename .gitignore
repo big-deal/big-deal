@@ -14,3 +14,4 @@ yarn-error.log*
 .env
 .phpstorm.*.php
 *.list
+*.patch

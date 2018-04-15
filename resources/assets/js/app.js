@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+require('./amoSettingsFields');
+
 window.Vue = require('vue');
 
 /**
