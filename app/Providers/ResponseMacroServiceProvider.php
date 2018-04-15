@@ -2,27 +2,25 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Response;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Response;
 
 class ResponseMacroServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        Response::macro('success', function ($data) {
+        Response::macro('success', function ($response, $status = 200) {
             return response()
                 ->json([
-                    'errors' => false,
-                    'data' => $data,
-                ])
+                    'response' => $response,
+                ], $status)
                 ->withCallback(request()->input('callback'));
         });
 
-        Response::macro('error', function ($message, $status = 400) {
+        Response::macro('error', function ($error, $status = 400) {
             return response()
                 ->json([
-                    'errors' => true,
-                    'message' => $message,
+                    'error' => $error,
                 ], $status)
                 ->withCallback(request()->input('callback'));
         });

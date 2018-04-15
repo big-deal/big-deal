@@ -4,7 +4,7 @@
            placeholder="{{ __($placeholder ?? $label) }}" {{ $required ?? false ? 'required' : '' }}
            value="{{ $value ?? '' }}" {{ $disabled ?? false ? 'disabled' : '' }}
            aria-label="{{ __($label) }}">
-    @if(strlen($slot))
+    @if(strlen($slot ?? ''))
         <div class="input-group-append">
             {{ $slot }}
         </div>

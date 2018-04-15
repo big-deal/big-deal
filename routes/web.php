@@ -49,6 +49,23 @@ Route::group(['middleware' => 'auth'], function () {
                     'destroy',
                 ],
             ]);
+            /*
+             * AmoCRM
+             */
+            Route::resource('amos', 'AmoController', [
+                'only' => [
+                    'create',
+                    'store',
+                    'edit',
+                    'update',
+                ],
+            ]);
+            Route::group(['as' => 'amos.', 'prefix' => 'amos/{amo}'], function () {
+                Route::group(['as' => 'managers.', 'prefix' => 'managers'], function () {
+                    Route::get('', 'AmoController@managersEdit')->name('edit');
+                    Route::put('', 'AmoController@managersUpdate')->name('update');
+                });
+            });
         });
     });
 });
