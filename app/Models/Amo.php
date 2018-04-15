@@ -3,9 +3,9 @@
 namespace App\Models;
 
 use AmoCRM\Client;
-use App\Contracts\AmoSettingable as AmoSettingableContract;
 use App\Traits\AmoSettingable;
 use Illuminate\Database\Eloquent\Model;
+use App\Contracts\AmoSettingable as AmoSettingableContract;
 
 class Amo extends Model implements AmoSettingableContract
 {
