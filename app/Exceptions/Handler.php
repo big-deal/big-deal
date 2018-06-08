@@ -33,6 +33,7 @@ class Handler extends ExceptionHandler
      *
      * @param  \Exception  $exception
      * @return void
+     * @throws \Exception
      */
     public function report(Exception $exception)
     {
@@ -49,17 +50,5 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         return parent::render($request, $exception);
-    }
-
-    /**
-     * Get the Whoops handler for the application.
-     *
-     * @return \Whoops\Handler\Handler
-     */
-    protected function whoopsHandler()
-    {
-        return tap(parent::whoopsHandler(), function ($handler) {
-            $handler->setEditor('idea');
-        });
     }
 }
