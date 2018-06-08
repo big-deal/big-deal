@@ -41,6 +41,16 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    'debug_blacklist' => debug_blacklist([
+        'APP_KEY',
+        'DB_PASSWORD',
+        'REDIS_PASSWORD',
+        'MEMCACHED_PASSWORD',
+        'MAIL_PASSWORD',
+    ]),
+
+    'editor' => env('APP_EDITOR', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application URL

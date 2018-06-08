@@ -110,7 +110,7 @@
     else
         WORK_DIR="{{ $release }}";
     fi
-    php ${WORK_DIR}/artisan migrate --env={{ $env }} --force --no-interaction
+    php ${WORK_DIR}/artisan migrate --env={{ $env }} --force --no-interaction;
 @endtask
 
 @task('task_cache')
@@ -128,9 +128,9 @@
 @task('task_finish')
     mkdir -p {{ $archive }};
     if [ -d {{ $path }}/current ]; then
-        mv $(readlink {{ $path }}/current) {{ $archive }}/$(basename $(readlink {{ $path }}/current));
+        mv "$(readlink {{ $path }}/current)" "{{ $archive }}/$(basename $(readlink {{ $path }}/current))";
     fi
-    ln -nfs {{ $release }} {{ $path }}/current
+    ln -nfs {{ $release }} {{ $path }}/current;
     printf "\e[96mDeployment ({{ $date }}) finished\n";
 @endtask
 
