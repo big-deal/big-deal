@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-if (!function_exists('have_fun')) {
+if (! function_exists('have_fun')) {
     function have_fun($normal = 1, $april_fools_day = 50)
     {
         $now = \Carbon\Carbon::now();
@@ -11,7 +11,7 @@ if (!function_exists('have_fun')) {
     }
 }
 
-if (!function_exists('debug_blacklist')) {
+if (! function_exists('debug_blacklist')) {
     function debug_blacklist($keys = [])
     {
         $superGlobalNames = [
