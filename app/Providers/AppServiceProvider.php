@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Horizon\Horizon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Carbon::setLocale(config('app.locale', config('app.fallback_locale', 'en')));
+
+        Horizon::auth(function ($request) {
+            return Auth::check();
+        });
 
         foreach (config('observers') as $model => $observer) {
             /* @var \Illuminate\Database\Eloquent\Model $model */
