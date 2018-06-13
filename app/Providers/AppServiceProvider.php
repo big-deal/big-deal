@@ -3,9 +3,9 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Laravel\Horizon\Horizon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Horizon\Horizon;
 
 class AppServiceProvider extends ServiceProvider
 {
